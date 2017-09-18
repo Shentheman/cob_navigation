@@ -23,6 +23,7 @@ SET(robotlist
     raw3-1
     raw3-3
     raw3-5
+    raw3-6
 )
     
 if(CATKIN_ENABLE_TESTING)

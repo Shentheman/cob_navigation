@@ -1,3 +1,4 @@
+# http://wiki.ros.org/navigation/Tutorials/RobotSetup
 # The global frame of the costmap to operate in
 global_frame: map # default: "/map" -> WARNING: Default value has a "/" in front of the frame-name
 
