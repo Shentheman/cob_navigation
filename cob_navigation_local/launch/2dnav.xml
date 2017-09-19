@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- <arg name="robot" default="raw3-6"/> -->
+  <arg name="robot" default="$(optenv ROBOT !!NO_ROBOT_SET!!)"/>
+  <arg name="pkg_nav_config" default="$(find cob_navigation_config)"/>
+  <arg name="base_navigation_local_planner" default="$(optenv BASE_NAVIGATION_LOCAL_PLANNER !!NO_BASE_NAVIGATION_LOCAL_PLANNER_SET!!)"/>
+  <arg name="base_navigation_global_planner" default="$(optenv BASE_NAVIGATION_GLOBAL_PLANNER !!NO_BASE_NAVIGATION_GLOBAL_PLANNER_SET!!)"/>
+
+  <!-- delete old parameters -->
+  <rosparam command="delete" param="/move_base"/>
+
+  <!--- Run move base -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <remap from="cmd_vel" to="base/twist_mux/command_navigation"/>
+    <remap from="odom" to="base/odometry_controller/odometry"/>
+    <param name="controller_frequency" value="12"/>
+
+    <!--- load common configuration files -->
+    <rosparam file="$(arg pkg_nav_config)/robots/$(arg robot)/nav/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(arg pkg_nav_config)/robots/$(arg robot)/nav/costmap_common_params.yaml" command="load" ns="local_costmap" />
+
+    <!--- load local navigation specific parameters -->
+    <rosparam file="$(find cob_navigation_local)/config/local_costmap_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find cob_navigation_local)/config/global_costmap_params.yaml" command="load" ns="global_costmap" />
+
+    <!--- load planners -->
+    <param name="base_local_planner" value="$(arg base_navigation_local_planner)"/>
+    <param name="base_global_planner" value="$(arg base_navigation_global_planner)"/>
+
+    <!--- load planner parameters -->
+    <rosparam file="$(arg pkg_nav_config)/robots/$(arg robot)/nav/$(arg base_navigation_local_planner).yaml" command="load"/>
+  </node>
+
+</launch>
