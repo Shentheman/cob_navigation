@@ -1,28 +1,30 @@
 EBandPlannerROS:
   # http://wiki.ros.org/eband_local_planner
   # The rate in Hz at which to run the control loop and send velocity commands to the base.
-  Ctrl_Rate: 20.0 # default: 20.0 
+  Ctrl_Rate: 10.0 # default: 20.0 
 
   # Set false if the robot is omni-directional (holonomic).
   differential_drive: false # default: True
 
   # Maximum linear acceleration (meters/sec/sec).
-  max_acceleration: 0.5 # default: 0.5
+  max_acceleration: 2.5 # default: 0.5
+  max_translational_acceleration: 2.5
+  max_rotational_acceleration: 3.2
 
   # Maximum linear velocity allowed (meters/sec).
-  max_vel_lin: 0.75 # default: 0.75
+  max_vel_lin: 0.3 # default: 0.75
 
   # Maximum rotational velocity allowed (radians/sec).
-  max_vel_th: 1.0 # default: 1.0
+  max_vel_th: 0.8 # default: 1.0
 
   # Minimum linear velocity allowed (meters/sec).
-  min_vel_lin: 0.01 # default: 0.01
+  min_vel_lin: -0.3 # default: 0.01
 
   # Minimum rotational velocity allowed (radians/sec).
-  min_vel_th: 0.0 # default: 0.0
+  min_vel_th: 0.01 # default: 0.0
 
   # Tolerate missing the goal by this linear distance (meters).
-  xy_goal_tolerance: 0.02 # default: 0.02
+  xy_goal_tolerance: 0.2 # default: 0.02
 
   # Tolerate missing the goal by this angular distance (radians).
-  yaw_goal_tolerance: 1.5 # default: 1.5
+  yaw_goal_tolerance: 0.17 # default: 1.5

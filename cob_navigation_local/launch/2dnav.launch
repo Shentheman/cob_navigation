@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- <arg name="robot" default="raw3-6"/> -->
+  <arg name="robot" default="$(optenv ROBOT !!NO_ROBOT_SET!!)"/>
+  <!-- <arg name="robot_env" default="ipa-kitchen"/> -->
+  <arg name="robot_env" default="$(optenv ROBOT_ENV !!NO_ROBOT_ENV_SET!!)"/>
+  <arg name="pkg_nav_config" default="$(find cob_navigation_config)"/>
+  <arg name="base_navigation_local_planner" default="$(optenv BASE_NAVIGATION_LOCAL_PLANNER !!NO_BASE_NAVIGATION_LOCAL_PLANNER_SET!!)"/>
+  <arg name="base_navigation_global_planner" default="$(optenv BASE_NAVIGATION_GLOBAL_PLANNER !!NO_BASE_NAVIGATION_GLOBAL_PLANNER_SET!!)"/>
+
+  <!--- Run move base -->
+  <include file="$(find cob_navigation_local)/launch/2dnav.xml">
+    <arg name="robot" value="$(arg robot)"/>
+    <arg name="robot_env" value="$(arg robot_env)" />
+    <arg name="pkg_nav_config" value="$(find cob_navigation_config)"/>
+    <arg name="base_navigation_local_planner" value="$(arg base_navigation_local_planner)"/>
+    <arg name="base_navigation_global_planner" value="$(arg base_navigation_global_planner)"/>
+  </include>
+
+</launch>

@@ -2,19 +2,19 @@ TebLocalPlannerROS:
   # http://wiki.ros.org/teb_local_planner
 
   # 1. Robot Configuration Parameters
-  acc_lim_x: 0.5 # default: 0.5
+  acc_lim_x: 2.5 # default: 0.5
   #Maximum translational acceleration of the robot in meters/sec^2
 
-  acc_lim_theta: 0.5 # default: 0.5
+  acc_lim_theta: 3.2 # default: 0.5
   #Maximum angular acceleration of the robot in radians/sec^2
 
-  max_vel_x: 0.4 # default: 0.4
+  max_vel_x: 0.3 # default: 0.4
   #Maximum translational velocity of the robot in meters/sec
 
-  max_vel_x_backwards: 0.2 # default: 0.2
+  max_vel_x_backwards: 0.3 # default: 0.2
   #Maximum absolute translational velocity of the robot while driving backwards in meters/sec. See optimization parameter weight_kinematics_forward_drive
 
-  max_vel_theta: 0.3 # default: 0.3
+  max_vel_theta: 0.6 # default: 0.3
   #Maximum angular velocity of the robot in radians/sec
 
   # 1(1) The following parameters are relevant only for carlike robots:
@@ -29,13 +29,13 @@ TebLocalPlannerROS:
 
   # 1(2) The following parameters are relevant only for holonomic robots: New in ROS kinetic
   #XXX:Note, reduce weight_kinematics_nh significantly in order to adjust the tradeoff between usual driving and strafing.
-  max_vel_y: 0.4 # default: 0.0
+  max_vel_y: 0.2 # default: 0.0
   #Maximum strafing velocity of the robot (should be zero for non-holonomic robots!)
   # For non-holonomic:
   # In case of a non-holonomic robot, the strafing velocity max_vel_y (velocity towards the y-direction w.r.t. the robot base frame) must be zero. Choose a positive bound in order to activate the support of holonomic robots. The value is considered for both strafing to the left and to the right side.
   # http://wiki.ros.org/teb_local_planner/Tutorials/Planning%20for%20holonomic%20robots
 
-  acc_lim_y: 0.5 # default: 0.5
+  acc_lim_y: 2.5 # default: 0.5
   #Maximum strafing acceleration of the robot
 
 

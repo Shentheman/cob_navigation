@@ -1,6 +1,7 @@
 DWAPlannerROS:
   #From ipa320 cob_navigation
   # https://github.com/ipa320/cob_navigation/blob/indigo_dev/cob_navigation_config/robots/raw3-5/nav/dwa_local_planner.yaml
+  # http://wiki.ros.org/dwa_local_planner
   acc_lim_th: 3.2
   acc_lim_x: 2.5
   acc_lim_y: 2.5
