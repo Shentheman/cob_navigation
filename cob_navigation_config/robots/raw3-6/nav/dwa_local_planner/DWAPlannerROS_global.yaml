@@ -2,6 +2,9 @@ DWAPlannerROS:
   #From ipa320 cob_navigation
   # https://github.com/ipa320/cob_navigation/blob/indigo_dev/cob_navigation_config/robots/raw3-5/nav/dwa_local_planner.yaml
   # http://wiki.ros.org/dwa_local_planner
+
+  # x velocity means the velocity in the direction parallel to robot's straight movement. It is the same as translational velocity. y velocity is the velocity in the direction perpendicular to that straight movement. It is called "strafing velocity" in teb_local_planner. y velocity should be set to zero for non-holonomic robot (such as differential wheeled robots).
+
   acc_lim_th: 3.2
   acc_lim_x: 2.5
   acc_lim_y: 2.5

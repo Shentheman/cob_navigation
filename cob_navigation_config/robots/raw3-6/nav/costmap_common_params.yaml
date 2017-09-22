@@ -82,7 +82,9 @@ obstacle_layer:
 inflation_layer:
 
   # The radius in meters to which the map inflates obstacle cost values.
+  # inflation_radius controls how far away the zero cost point is from the obstacle
   inflation_radius: 0.55 # default: 0.55
 
   # A scaling factor to apply to cost values during inflation.
+  # cost_scaling_factor is inversely proportional to the cost of a cell
   cost_scaling_factor: 8.01 # default: 10.0

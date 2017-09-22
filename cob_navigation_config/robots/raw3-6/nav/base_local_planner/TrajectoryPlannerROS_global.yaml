@@ -80,7 +80,7 @@ TrajectoryPlannerROS:
   #   #pdist_scale * (distance to path from the endpoint of the trajectory in map cells or meters depending on the meter_scoring parameter) 
   #   #+ gdist_scale * (distance to local goal from the endpoint of the trajectory in map cells or meters depending on the meter_scoring parameter) 
   #   #+ occdist_scale * (maximum obstacle cost along the trajectory in obstacle cost (0-254))
-  # meter_scoring: true # default: false
+  meter_scoring: true # default: false
   # #Whether the gdist_scale and pdist_scale parameters should assume that goal_distance and path_distance are expressed in units of meters or cells. Cells are assumed by default. New in navigation 1.3.1
   # pdist_scale: 0.6 # default: 0.6
   # #The weighting for how much the controller should stay close to the path it was given, maximal possible value is 5.0

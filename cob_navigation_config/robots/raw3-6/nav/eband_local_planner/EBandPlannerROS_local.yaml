@@ -1,0 +1,41 @@
+EBandPlannerROS:
+  # http://wiki.ros.org/eband_local_planner
+  # The rate in Hz at which to run the control loop and send velocity commands to the base.
+  # Cob has config too
+  # https://github.com/ipa320/cob_navigation/blob/baf7300bf9ad39faf098b5263a810339b8670c41/cob_navigation_global/config/local_planner_eband.yaml
+
+  # Maximum linear velocity allowed (meters/sec).
+  max_vel_lin: 0.74 # default: 0.75
+  # Maximum rotational velocity allowed (radians/sec).
+  max_vel_th: 0.5 # default: 1.0
+
+  # Minimum linear velocity allowed (meters/sec).
+  min_vel_lin: 0.0 # default: 0.01
+  # Minimum rotational velocity allowed (radians/sec).
+  min_vel_th: 0.0 # default: 0.0
+
+  min_in_place_vel_th: 0.0
+  in_place_trans_vel: 0.0
+
+  # Tolerate missing the goal by this linear distance (meters).
+  xy_goal_tolerance: 0.02 # default: 0.02
+  # Tolerate missing the goal by this angular distance (radians).
+  yaw_goal_tolerance: 0.04 # default: 1.5
+  tolerance_timeout: 0.5
+
+  k_prop: 4.0
+  k_damp: 3.5
+
+  Ctrl_Rate: 15.0 # default: 20.0 
+
+  # Maximum linear acceleration (meters/sec/sec).
+  max_acceleration: 0.3 # default: 0.5
+  virtual_mass: 0.75
+  
+  max_translational_acceleration: 0.3
+  max_rotational_acceleration: 1.5
+
+  rotation_correction_threshold: 2.0
+
+  # Set false if the robot is omni-directional (holonomic).
+  differential_drive: false # default: True

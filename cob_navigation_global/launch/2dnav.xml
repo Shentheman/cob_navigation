@@ -30,6 +30,8 @@
     <remap from="cmd_vel" to="base/twist_mux/command_navigation"/>
     <remap from="odom" to="base/odometry_controller/odometry"/>
     <param name="controller_frequency" value="10"/>
+    <!-- https://answers.ros.org/question/188847/hydro-error-in-move_baselaunch/ -->
+    <param name="meter_scoring" value="true"/>
 
     <!--- load common configuration files -->
     <rosparam file="$(arg pkg_nav_config)/robots/$(arg robot)/nav/costmap_common_params.yaml" command="load" ns="global_costmap" />
@@ -45,7 +47,7 @@
 
     <!--- load planner parameters -->
     <!-- <rosparam file="$(arg pkg_nav_config)/robots/$(arg robot)/nav/base_local_planner_params.yaml" command="load"/> -->
-    <rosparam file="$(arg pkg_nav_config)/robots/$(arg robot)/nav/$(arg base_navigation_local_planner).yaml" command="load"/>
+    <rosparam file="$(arg pkg_nav_config)/robots/$(arg robot)/nav/$(arg base_navigation_local_planner)_global.yaml" command="load"/>
   </node>
 
 </launch>
