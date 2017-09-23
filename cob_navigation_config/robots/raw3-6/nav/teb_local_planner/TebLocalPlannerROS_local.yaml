@@ -268,7 +268,8 @@ TebLocalPlannerROS:
   # TODO: seems not necessary???
   odom_topic: "/base/odometry_controller/odometry" # default: "odom"
   #Topic name of the odometry message, provided by the robot driver or simulator.
-
+  # odom_combined
+  
   # map_frame: "/base/odometry_controller/odometry" # default: "odom"
   map_frame: "/base/odometry_controller/odometry" # default: "odom"
   #Global planning frame (in case of a static map, this parameter must be usually changed to "/map".
