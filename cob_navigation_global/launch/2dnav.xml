@@ -5,12 +5,15 @@
   <arg name="robot" default="$(optenv ROBOT !!NO_ROBOT_SET!!)"/>
   <!-- <arg name="robot_env" default="ipa-kitchen"/> -->
   <arg name="robot_env" default="$(optenv ROBOT_ENV !!NO_ROBOT_ENV_SET!!)"/>
-  <arg name="pkg_nav_config" default="$(find cob_navigation_config)"/>
+  <arg name="pkg_data" default="$(optenv PKG_DATA !!NO_PKG_DATA_SET!!)"/>
+
+  <arg name="pkg_nav_config" default="$(optenv PKG_NAV_CONFIG !!PKG_NAV_CONFIG!!)"/>
   <arg name="base_navigation_local_planner" default="$(optenv BASE_NAVIGATION_LOCAL_PLANNER !!NO_BASE_NAVIGATION_LOCAL_PLANNER_SET!!)"/>
   <arg name="base_navigation_global_planner" default="$(optenv BASE_NAVIGATION_GLOBAL_PLANNER !!NO_BASE_NAVIGATION_GLOBAL_PLANNER_SET!!)"/>
 
-  <arg name="pkg_env_config" default="$(find cob_default_env_config)"/>
-  <arg name="map" default="$(arg pkg_env_config)/envs/$(arg robot_env)/map.yaml" />
+  <arg name="pkg_env_config" default="$(arg pkg_data)/environments/$(arg robot_env)" />
+  <!-- <arg name="map" default="$(arg pkg_env_config)/envs/$(arg robot_env)/map.yaml" /> -->
+  <arg name="map" default="$(arg pkg_env_config)/map.yaml" />
 
   <!--- Run map_server -->
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map)"/>
