@@ -43,13 +43,13 @@ obstacle_layer:
     clearing: true                      # Whether or not this observation is used to clear out freespace, default: false
 
   # Parameters of the source: cloud_cam3d
-  cloud_cam3d:
-    sensor_frame: head_cam3d_link       # The frame of the origin of the sensor, default: ""
-    topic: /voxel_grid/output           # The topic on which sensor data comes in for this source, default: source_name
-    data_type: PointCloud2              # The data type associated with the topic, default: "PointCloud"
-    marking: true                       # Whether or not this observation is used to mark obstacles, default: true
-    clearing: true                      # Whether or not this observation is used to clear out freespace, default: false
-    min_obstacle_height: 0.12           # Minimum height in meters of a sensor reading considered valid, default: 0.0
+  # cloud_cam3d:
+  #   sensor_frame: head_cam3d_link       # The frame of the origin of the sensor, default: ""
+  #   topic: /voxel_grid/output           # The topic on which sensor data comes in for this source, default: source_name
+  #   data_type: PointCloud2              # The data type associated with the topic, default: "PointCloud"
+  #   marking: true                       # Whether or not this observation is used to mark obstacles, default: true
+  #   clearing: true                      # Whether or not this observation is used to clear out freespace, default: false
+  #   min_obstacle_height: 0.12           # Minimum height in meters of a sensor reading considered valid, default: 0.0
 
   # The default maximum distance from the robot at which an obstacle will be inserted into the cost map in meters
   obstacle_range: 5.0 # default: 2.5
