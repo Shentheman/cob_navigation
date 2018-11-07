@@ -1,0 +1,10 @@
+# https://github.com/uos/ceres_robot/blob/master/ceres_navigation/config/controllers.yaml
+controllers:
+   - name: 'eband'
+     type: 'eband_local_planner/EBandPlannerROS'
+   - name: 'dwa'
+     type: 'dwa_local_planner/DWAPlannerROS'
+   - name: 'base'
+     type: 'base_local_planner/TrajectoryPlannerROS'
+   - name: 'teb'
+     type: 'teb_local_planner/TebLocalPlannerROS'
