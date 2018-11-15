@@ -474,11 +474,11 @@ void NodeClass::publishVelocitiesGlobal(double vx, double vy, double theta) {
       std::string err = "linear_nav: Output velocity contains NaN!";
       throw err;
     }
-    if ( ! ( fabs(cmd_robot.vector.x) < 5.0 && fabs(cmd_robot.vector.y) < 5.0 && fabs(theta) < M_PI ) )
-    {
-      std::string err = "linear_nav: Output velocity too high";
-      throw err;
-    }
+    // if ( ! ( fabs(cmd_robot.vector.x) < 5.0 && fabs(cmd_robot.vector.y) < 5.0 && fabs(theta) < M_PI ) )
+    // {
+    //   std::string err = "linear_nav: Output velocity too high";
+    //   throw err;
+    // }
   }
   catch ( std::string err )
   {
