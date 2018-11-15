@@ -1,21 +1,44 @@
 <?xml version="1.0"?>
 <launch>
   
-  <arg name="robot" default="raw3-6"/>
-  <!-- <arg name="robot" default="$(optenv ROBOT !!NO_ROBOT_SET!!)"/> -->
-  <arg name="robot_env" default="ipa-kitchen"/>
-  <!-- <arg name="robot_env" default="$(optenv ROBOT_ENV !!NO_ROBOT_ENV_SET!!)"/> -->
-  <arg name="pkg_env_config" default="$(find cob_default_env_config)"/>
-  <arg name="pkg_nav_config" default="$(find cob_navigation_config)"/>
-  <arg name="map" default="$(arg pkg_env_config)/envs/$(arg robot_env)/map.yaml" />
+  <!-- <arg name="robot" default="raw3-6"/> -->
+  <arg name="robot" default="$(optenv ROBOT !!NO_ROBOT_SET!!)"/>
+
+  <arg name="pkg_data" default="$(optenv PKG_DATA !!NO_PKG_DATA_SET!!)"/>
+  
+  <arg name="load_base_navigation_amcl" default="$(optenv LOAD_BASE_NAVIGATION_AMCL !!NO_LOAD_BASE_NAVIGATION_AMCL_SET!!)"/>
+
+  <!-- <arg name="robot_env" default="ipa-kitchen"/> -->
+  <arg name="robot_env" default="$(optenv ROBOT_ENV !!NO_ROBOT_ENV_SET!!)"/>
+
+  <!-- <arg name="pkg_env_config" default="$(find cob_default_env_config)"/> -->
+  <arg name="pkg_env_config" default="$(arg pkg_data)/environments/$(arg robot_env)" />
+
+  <!-- <arg name="pkg_nav_config" default="$(find cob_navigation_config)"/> -->
+  <arg name="pkg_nav_config" default="$(optenv PKG_NAV_CONFIG !!PKG_NAV_CONFIG!!)"/>
+
+  <!-- <arg name="map" default="$(arg pkg_env_config)/envs/$(arg robot_env)/map.yaml" /> -->
+  <arg name="map" default="$(arg pkg_env_config)/map.yaml" />
 
   <!--- Run map_server -->
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map)"/>
 
-  <!--- Run AMCL -->
-  <include file="$(find cob_navigation_global)/launch/amcl_node.xml" >
-    <arg name="robot" value="$(arg robot)"/>
-  </include>
+  
+  <group if="$(arg load_base_navigation_amcl)">
+    <include file="$(find cob_navigation_global)/launch/amcl_node.xml" >
+      <arg name="robot" value="$(arg robot)"/>
+    </include>
+  </group>
+  <group unless="$(arg load_base_navigation_amcl)">
+    <node pkg="fake_localization" type="fake_localization" name="fake_localization">
+      <param name="odom_frame_id" value="odom_combined"/>
+      <param name="base_frame_id" value="base_footprint"/>
+      <param name="global_frame_id" value="map"/>
+      <param name="delta_x" value="0.0"/>
+      <param name="delta_y" value="0.0"/>
+      <param name="delta_yaw" value="0.0"/>
+    </node>
+  </group>
 
   <!-- Run linear nav -->
   <include file="$(find cob_navigation_global)/launch/2dnav_linear.xml" >
